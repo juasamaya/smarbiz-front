@@ -23,11 +23,13 @@ import {
   AddCircle as AddCircleIcon, 
   Settings as SettingsIcon, 
   Logout as LogoutIcon, 
-  SmartToy as SmartToyIcon, 
   Star as StarIcon 
 } from '@mui/icons-material';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+
+// IMPORTAMOS EL CHATBOT (Asegúrate de que la ruta sea la correcta según tu estructura de carpetas)
+import { SmartBizChat } from './SmartBizChat'; 
 
 const DRAWER_WIDTH = 240;
 
@@ -74,15 +76,11 @@ export const DashboardLayout = () => {
     navigate('/login');
   };
 
+  // ELIMINAMOS EL ASISTENTE DEL MENÚ LATERAL porque ahora es un widget flotante
   const menuItems: MenuItemConfig[] = [
     { text: 'Resumen', icon: <DashboardIcon />, path: '/dashboard' },
     { text: 'Mis Facturas', icon: <ReceiptIcon />, path: '/dashboard/invoices' },
     { text: 'Crear Factura', icon: <AddCircleIcon />, path: '/dashboard/create-invoice' },
-    ...(isPro ? [{ 
-        text: 'Asistente IA', 
-        icon: <SmartToyIcon sx={{ color: '#9c27b0' }} />, 
-        path: '/dashboard/ai-chat' 
-    }] : []),
     { text: 'Configuración', icon: <SettingsIcon />, path: '/dashboard/settings' },
   ];
 
@@ -206,6 +204,10 @@ export const DashboardLayout = () => {
         <Toolbar /> {/* Espaciador para que el AppBar no tape el contenido */}
         <Outlet />
       </Box>
+
+      {/* AQUÍ INYECTAMOS EL ASISTENTE FLOTANTE PARA USUARIOS PRO */}
+      {isPro && <SmartBizChat />}
+      
     </Box>
   );
 };
