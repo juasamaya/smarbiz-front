@@ -53,7 +53,7 @@ export const Landing = () => {
     },
     {
       title: 'Pro AI',
-      price: '59.900',
+      price: '39.900',
       description: ['Facturas Ilimitadas', 'Asistente IA (Gemini)', 'API de integración', 'Soporte VIP 24/7', 'Múltiples Usuarios'],
       buttonText: 'Elegir Pro',
       buttonVariant: 'contained' as const,

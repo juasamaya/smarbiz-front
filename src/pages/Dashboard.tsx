@@ -20,8 +20,8 @@ export const Dashboard = () => {
 
         // Llamadas al backend (URLs directas para evitar errores de config)
         const [statsRes, chartsRes] = await Promise.all([
-          fetch('http://localhost:3000/dashboard/stats', { headers }),
-          fetch('http://localhost:3000/dashboard/charts', { headers })
+          fetch('https://smartbiz-backend-goy8.onrender.com/dashboard/stats', { headers }),
+          fetch('https://smartbiz-backend-goy8.onrender.com/dashboard/charts', { headers })
         ]);
 
         if (statsRes.ok && chartsRes.ok) {
