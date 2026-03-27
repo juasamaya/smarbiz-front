@@ -183,7 +183,6 @@ export const InvoicesList = () => {
                           <IconButton 
                             size="small" 
                             color="primary"
-                            disabled={!isAuthorized}
                             onClick={() => handleDownloadPDF(inv.id, inv.prefix, inv.number)}
                           >
                             <DownloadIcon />
